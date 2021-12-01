@@ -16,24 +16,11 @@ public class Hooks {
     }
 
 
-    @Before ("@db")
-    public void setupScenarioForDb(){
-        System.out.println("Database Connection established");
-
-    }
-
     @After
     public void tearDownScenario(){
 
         Driver.quitDriver();
     }
-
-    @After ("@db")
-    public void tearDownScenarioDB(){
-        System.out.println("Close the db connection");
-
-    }
-
 
 
 }
