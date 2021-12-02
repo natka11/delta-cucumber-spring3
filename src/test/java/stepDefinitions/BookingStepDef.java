@@ -14,6 +14,7 @@ import utilities.SeleniumUtils;
 import java.util.List;
 
 public class BookingStepDef {
+
     BookingPage bookingPage;
     String actual;
     String expected;
@@ -24,10 +25,9 @@ public class BookingStepDef {
     String destinationCity;
 
 
-    @Given("I am on home page")
-    public void i_am_on_home_page() {
+    @Given("When I am on home page")
+    public void whenIAmOnHomePage() {
         Driver.getDriver().get(ConfigReader.getProperty("url"));
-
     }
     @When("I click on {string} link")
     public void i_click_on_link(String bookingLink) {
@@ -54,42 +54,27 @@ public class BookingStepDef {
 
     @Then("I should be able to enter valid departure city name")
     public void i_should_be_able_to_enter_valid_departure_city_name() {
-
-      bookingPage =new BookingPage();
-
-
-      bookingPage.departureCity.sendKeys("YVR");
-      bookingPage.departureCity.sendKeys(Keys.ENTER);
-      departureCity1= bookingPage.departureCity.getText();
-
-
-
-        SeleniumUtils.waitFor(5);
-
-
-        SeleniumUtils.waitFor(5);
-        System.out.println(departureCity1);
+     new BookingPage().enterDepartureCity();
 
 
     }
+
     @Then("Departure city should appear in departure field.")
     public void departure_city_should_appear_in_departure_field() {
-
-        assertEquals("YVR",departureCity1);
+   assertTrue(new BookingPage().departureCity.isDisplayed());
 
     }
 
     @Then("I should be able to enter valid destination city name")
     public void i_should_be_able_to_enter_valid_destination_city_name() {
-      // String jfk= bookingPage.destinationCity.sendKeys("JFK");
-        SeleniumUtils.waitFor(5);
+        new BookingPage().destinationCity.sendKeys("JFK"+Keys.ENTER);
 
-        destinationCity= bookingPage.destinationCity.getText();
+
 
     }
     @Then("Destination city should appear in destination field.")
     public void destination_city_should_appear_in_destination_field() {
-        assertEquals(destinationCity,"JFK");
+       assertTrue(new BookingPage().departureCity.isDisplayed());
 
     }
 
@@ -111,5 +96,21 @@ public class BookingStepDef {
         assertEquals(expected,actual);
 
     }
+
+
+    @Then("I should be able leave  departure city field empty")
+    public void iShouldBeAbleLeaveDepartureCityFieldEmpty() {
+        new BookingPage().departureCity.click();
+        new BookingPage().searchDepartureCity.clear();
+        new BookingPage().searchDepartureCity.sendKeys("");
+        new BookingPage().submitClick();
+    }
+    @Then("The error message should be there")
+    public void theErrorMessageShouldBeThere() {
+        assertTrue(new BookingPage().errorMsgDC.isDisplayed());
+
+    }
+
+
 
 }

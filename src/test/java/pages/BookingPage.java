@@ -22,6 +22,11 @@ public class BookingPage {
     @FindBy (id = "fromAirportName")
     public WebElement departureCity;
 
+    @FindBy (xpath = " //input[@id='search_input']")
+    public WebElement searchDepartureCity;
+
+
+
     @FindBy (id = "toAirportName")
     public WebElement destinationCity;
 
@@ -58,6 +63,15 @@ public class BookingPage {
     public void submitClick(){
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("arguments[0].click()",submit);
+
+    }
+
+    public void enterDepartureCity(){
+//        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+//        js.executeScript("arguments[0].click()",departureCity);
+//        js.executeScript("searchDepartureCity.value='YVR';");
+
+        departureCity.sendKeys("YVR"+Keys.ENTER);
 
     }
 
