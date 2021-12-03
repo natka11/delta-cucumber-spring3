@@ -11,6 +11,8 @@ Feature: As a customer I should be able to check my flight status.
 
 
 
+
+
   Scenario: Search by date
       Then I should be able to select valid date on a calendar
       And Selected date should be displayed

@@ -41,7 +41,6 @@ public class FlightStatusStepDef {
 
     @Then("Selected date should be displayed")
     public void selectedDateShouldBeDisplayed() {
-
         assertTrue(new FlightStatusPage().date.isDisplayed());
     }
 
@@ -49,6 +48,7 @@ public class FlightStatusStepDef {
 
     @Then("I should be able to enter valid flight number")
     public void iShouldBeAbleToEnterValidFlightNumber() {
+
         new FlightStatusPage().enterFlightNo.sendKeys("326");
     }
 
@@ -112,30 +112,6 @@ public class FlightStatusStepDef {
     }
 
 
-
-
-//
-//    @Then("I should be able to enter invalid flight number")
-//    public void iShouldBeAbleToEnterInvalidFlightNumber() {
-//        new FlightStatusPage().enterFlightNo.sendKeys("5H7A89");
-//        new FlightStatusPage().submitBtn.click();
-//        SeleniumUtils.waitFor(5);
-//        SeleniumUtils.waitForVisibility(new FlightStatusPage().errorMsg,5);
-//
-//
-//    }
-//
-//
-//    @Then("new page should open")
-//    public void newPageShouldOpen() {
-//        assertEquals("Airline Tickets & Flights: Book Direct with Delta Air Lines - Official Site",(Driver.getDriver().getTitle()));
-//   // assertTrue(Driver.getDriver().getPageSource().contains("AIRCRAFT DETAILS"));
-//    }
-//
-//    @And("Error msg should appear")
-//    public void errorMsgShouldAppear() {
-//        assertTrue(new FlightStatusPage().errorMsg.isDisplayed());
-//    }
 
 
 }
