@@ -110,7 +110,4 @@ public class BookingStepDef {
         assertTrue(new BookingPage().errorMsgDC.isDisplayed());
 
     }
-
-
-
 }
