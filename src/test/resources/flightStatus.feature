@@ -1,13 +1,13 @@
-#@flightStatus
+@flightStatus
 Feature: As a customer I should be able to check my flight status.
 
   Background:
     Given I am on home page
     When I click on Flight Status link
 
-
-  Scenario: Check flight status page
-    Then I should verify that I lend on "Flight Status"page
+@smoke
+  Scenario: Go to flight status page
+    Then I should verify that I lend on Flight Status page
 
 
 
@@ -48,16 +48,7 @@ Feature: As a customer I should be able to check my flight status.
 
 
 
-#    Scenario: Select departure date
-#      Then I am able to select desire departure date
-#      Then My selected date should appear on calendar
-#
-#  Scenario: Select return date
-#    Then I am able to select desire return date
-#    Then My selected date should appear on calendar
-#
-#    Scenario: Passengers
-#      Then I am able to select amount of passengers traveling
+
 
 
 
