@@ -1,4 +1,4 @@
-@flightStatus
+#@flightStatus
 Feature: As a customer I should be able to check my flight status.
 
   Background:
