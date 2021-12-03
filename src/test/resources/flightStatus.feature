@@ -1,4 +1,4 @@
-@flightStatus
+
 Feature: As a customer I should be able to check my flight status.
 
   Background:
@@ -45,9 +45,10 @@ Feature: As a customer I should be able to check my flight status.
   Scenario: Enter invalid arrival city
     Then Enter invalid arrival city
     Then Search error msg should be displayed
-
-
-
+  @flightStatus
+    Scenario: Verify submit button
+      Then Click on submit button.
+      And I am able to click on submit button.
 
 
 

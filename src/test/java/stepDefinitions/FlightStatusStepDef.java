@@ -57,9 +57,7 @@ public class FlightStatusStepDef {
 
     @And("Flight number should be displayed")
     public void flightNumberShouldBeDisplayed() {
-        String expected= "326";
-        System.out.println(new FlightStatusPage().enterFlightNo.getAttribute("value"));
-        assertEquals(expected,new FlightStatusPage().enterFlightNo.getAttribute("value"));
+        assertEquals("326",new FlightStatusPage().enterFlightNo.getAttribute("value"));
 
     }
 
@@ -84,8 +82,8 @@ public class FlightStatusStepDef {
 
     @Then("Departure city info should be displayed")
     public void departureCityInfoShouldBeDisplayed() {
-        String expected= "LAX";
-        assertEquals(expected,new FlightStatusPage().searchCity.getAttribute("value"));
+
+        assertEquals("LAX",new FlightStatusPage().searchCity.getAttribute("value"));
 
     }
 
@@ -96,8 +94,7 @@ public class FlightStatusStepDef {
 
     @Then("invalid airport msg should be displayed")
     public void invalidAirportMsgShouldBeDisplayed() {
-        String incorrectCity = "Please enter a valid city code or airport name";
-        assertEquals(incorrectCity,new FlightStatusPage().departureError.getText());
+        assertEquals("Please enter a valid city code or airport name",new FlightStatusPage().departureError.getText());
     }
 
     @Then("Enter valid arrival city")
@@ -108,8 +105,7 @@ public class FlightStatusStepDef {
 
     @Then("Arrival city info should be displayed")
     public void arrivalCityInfoShouldBeDisplayed() {
-        String expected ="JFK";
-        assertEquals(expected,new FlightStatusPage().searchCity.getAttribute("value"));
+        assertEquals("JFK",new FlightStatusPage().searchCity.getAttribute("value"));
 
 
     }
@@ -121,11 +117,18 @@ public class FlightStatusStepDef {
 
     @Then("Search error msg should be displayed")
     public void searchErrorMsgShouldBeDisplayed() {
-       String incorrectCity = "Please enter a valid city code or airport name";
 
-       assertEquals(incorrectCity,new FlightStatusPage().arrivalError.getText());
+       assertEquals("Please enter a valid city code or airport name",new FlightStatusPage().arrivalError.getText());
     }
 
 
+    @Then("Click on submit button.")
+    public void clickOnSubmitButton() {
+        new FlightStatusPage().submitBtn.click();
+    }
 
+    @And("I am able to click on submit button.")
+    public void iAmAbleToClickOnSubmitButton() {
+        assertTrue(new FlightStatusPage().submitBtn.isEnabled());
+    }
 }
