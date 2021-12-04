@@ -1,13 +1,15 @@
-@flightStatus
+
 Feature: As a customer I should be able to check my flight status.
 
   Background:
     Given I am on home page
     When I click on Flight Status link
 
+@smoke
+  Scenario: Go to flight status page
+    Then I should verify that I lend on Flight Status page
 
-  Scenario: Check flight status page
-    Then I should verify that I lend on "Flight Status"page
+
 
 
 
@@ -43,19 +45,11 @@ Feature: As a customer I should be able to check my flight status.
   Scenario: Enter invalid arrival city
     Then Enter invalid arrival city
     Then Search error msg should be displayed
+  @flightStatus
+    Scenario: Verify submit button
+      Then Click on submit button.
+      And I am able to click on submit button.
 
-
-
-#    Scenario: Select departure date
-#      Then I am able to select desire departure date
-#      Then My selected date should appear on calendar
-#
-#  Scenario: Select return date
-#    Then I am able to select desire return date
-#    Then My selected date should appear on calendar
-#
-#    Scenario: Passengers
-#      Then I am able to select amount of passengers traveling
 
 
 
