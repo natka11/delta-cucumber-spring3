@@ -5,7 +5,7 @@ Given I am on the homepage
 When I click on Updated Bag & Travel Fees
 Then I should land on the Updated Bag & Travel Fees Page
 
-  @smoke
+
   Scenario Outline: Verify the customer can checked baggage fees options
 
     When I click on "<OptionAvailable>"
@@ -18,7 +18,7 @@ Then I should land on the Updated Bag & Travel Fees Page
       | Carry - On Baggage   | 30.00     | 40.00     |
 
 
-  @smoke
+
   Scenario: Verify the customer cannot enter invalid information on Track Checked Baggage page
 
   When I click on Track Checked Baggage page
@@ -27,13 +27,13 @@ Then I should land on the Updated Bag & Travel Fees Page
     | BagTagNumber | Sky578475t   | Novak    |
   Then I should have an error message because I entered invalid information
 
-  @smoke
+
   Scenario: Verify the customer can use option Calculate Baggage Estimate
 
   When I click on My Trip button
   Then I should land on find my trip page
 
-  @smoke
+
   Scenario: Verify MORE option list
 
   Then The MORE option category should include
@@ -48,7 +48,7 @@ Then I should land on the Updated Bag & Travel Fees Page
    | 20-Minute Bag Guarantee        |
 
 
-  @smoke
+
   Scenario: Verify options list how I want to find my trip
 
     When I click on My Trip button

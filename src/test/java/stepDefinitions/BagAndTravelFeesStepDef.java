@@ -116,7 +116,6 @@ public class BagAndTravelFeesStepDef {
         public void the_find_my_trip_options_should_be_the_following(List<String> expectedTripOption) {
 
          List<String> actualOptions = SeleniumUtils.getElementsText(new BagAndTravelFees().FindMyTripOptions);
-
          Assert.assertEquals(expectedTripOption, actualOptions);
         }
     }
