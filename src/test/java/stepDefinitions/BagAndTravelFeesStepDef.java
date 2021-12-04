@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import pages.BagAndTravelFees;
-import pages.BookingPage;
+//import pages.BookingPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.SeleniumUtils;
@@ -71,41 +71,24 @@ public class BagAndTravelFeesStepDef {
         // new BagAndTravelFees().TrackCheckedBaggage.click();
         SeleniumUtils.jsClick(new BagAndTravelFees().TrackCheckedBaggage);
     }
-//}
 
-//    @Then("I should be able to search by Bag Tag Number and enter the {string} and enter {string}")
-//    public void i_should_be_able_to_search_by_bag_tag_number_and_enter_the_and_enter(String tagNumber, String lastName) {
-//        SeleniumUtils.scroll(0,500);
-//        new BagAndTravelFees().BagTagNumber.sendKeys(Keys.ENTER,tagNumber,Keys.ARROW_LEFT);
-//        new BagAndTravelFees().LastName.sendKeys(Keys.ENTER,lastName, Keys.ENTER);
-//        new BagAndTravelFees().CheckBoxStatus.click();
-////    }
-////
-////    @Then("I should have an error message because invalid information")
-////    public void i_should_have_an_error_message_because_invalid_information(){
-//
-//        String expected = "To continue, please correct";
-//        String pageSource = Driver.getDriver().getPageSource();
-//        Assert.assertTrue(pageSource.contains(expected));
+    @Then("I should be able to search by BTN and enter the BagTagNumber and enter LastName")
+    public void i_should_be_able_to_search_by_and_enter_the_and_enter(List<Map<String, String>> dataTable) {
 
 
-//    @Then("I should be able to search by {string} and enter the {string} and enter {string}")
-//    public void i_should_be_able_to_search_by_and_enter_the_and_enter(List<Map<String, String>> dataTable) {
-//
-//
-//        SeleniumUtils.scroll(0, 500);
-////            new BagAndTravelFees().BagTagNumber.sendKeys(dataTable.get(1).get("BagTagNumber"));
-////            new BagAndTravelFees().LastName.sendKeys(dataTable.get(1).get("LastName"))
-//
-//
-//        System.out.println(dataTable.get(1).get("BagTagNumber"));
-//        System.out.println(dataTable.get(1).get("LastName"));
+        SeleniumUtils.scroll(0, 500);
+        new BagAndTravelFees().BagTagNumber.sendKeys(dataTable.get(0).get("BagTagNumber"));
+        new BagAndTravelFees().LastName.sendKeys(dataTable.get(0).get("LastName"));
+    }
 
-    //            new BagAndTravelFees().CheckBoxStatus.click();
-//            String expected = "To continue, please correct";
-//            String pageSource = Driver.getDriver().getPageSource();
-//            Assert.assertTrue(pageSource.contains(expected));
-//    }
+     @Then("I should have an error message because I entered invalid information")
+     public void i_should_have_an_error_message_because_invalid_information(){
+
+            new BagAndTravelFees().CheckBoxStatus.click();
+            String expected = "To continue, please correct";
+            String pageSource = Driver.getDriver().getPageSource();
+            Assert.assertTrue(pageSource.contains(expected));
+    }
     @When("I click on My Trip button")
     public void i_click_on_my_trip_button() {
 

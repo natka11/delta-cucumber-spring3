@@ -5,41 +5,38 @@ Given I am on the homepage
 When I click on Updated Bag & Travel Fees
 Then I should land on the Updated Bag & Travel Fees Page
 
+  @smoke
+  Scenario Outline: Verify the customer can checked baggage fees options
 
-#  Scenario Outline: Verify the customer can checked baggage fees options
-#
-#    When I click on "<OptionAvailable>"
-#    Then The price for the first standard checked bag should be <Price_1st>
-#    And The price for the second standard checked bag should be <Price_2nd>
-#
-#    Examples:
-#      | OptionAvailable      | Price_1st | Price_2nd |
-#      | Checked Baggage Fees | 30.00     | 40.00     |
-#      | Carry - On Baggage   | 30.00     | 40.00     |
+    When I click on "<OptionAvailable>"
+    Then The price for the first standard checked bag should be <Price_1st>
+    And The price for the second standard checked bag should be <Price_2nd>
+
+    Examples:
+      | OptionAvailable      | Price_1st | Price_2nd |
+      | Checked Baggage Fees | 30.00     | 40.00     |
+      | Carry - On Baggage   | 30.00     | 40.00     |
 
 
-
-Scenario: Verify the customer cannot enter invalid information on Track Checked Baggage page
+  @smoke
+  Scenario: Verify the customer cannot enter invalid information on Track Checked Baggage page
 
   When I click on Track Checked Baggage page
-  Then I should be able to search by "Bag Tag Number" and enter the "<BagTagNumber>" and enter "<LastName>"
-    | BagTagNumber | LastName |
-    | BagTagNumber | LastName |
-#    | Sky578475t     | Novak     |
-#    | @bob3456908!   | Clinton   |
+  Then I should be able to search by BTN and enter the BagTagNumber and enter LastName
+    | BTN          | BagTagNumber | LastName |
+    | BagTagNumber | Sky578475t   | Novak    |
+  Then I should have an error message because I entered invalid information
 
-#    Then I should have an error message because invalid information
-
-
+  @smoke
   Scenario: Verify the customer can use option Calculate Baggage Estimate
 
   When I click on My Trip button
   Then I should land on find my trip page
 
-
+  @smoke
   Scenario: Verify MORE option list
 
- Then The MORE option category should include
+  Then The MORE option category should include
 
    | Track Checked Baggage          |
    | Special Items                  |
