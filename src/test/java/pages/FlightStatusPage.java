@@ -32,8 +32,6 @@ public class FlightStatusPage {
 
 
 
-    @FindBy (id="errorMassage")
-    public WebElement errorMsg;
 
     @FindBy (id="btn-flight-sts-submit")
     public WebElement submitBtn;
@@ -44,6 +42,9 @@ public class FlightStatusPage {
     @FindBy (id="departcitylink")
     public WebElement departCity;
 
+
+    @FindBy (id="search_input")
+    public WebElement searchCity;
 
     @FindBy (id="arrivalcitylink")
     public WebElement arrivalCity;
@@ -82,6 +83,12 @@ public class FlightStatusPage {
     public void selectDate(){
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("arguments[0].click()",date);
+
+    }
+
+    public void calendar(){
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("arguments[0].click()",calendar);
 
     }
 

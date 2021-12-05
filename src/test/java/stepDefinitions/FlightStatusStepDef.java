@@ -10,7 +10,6 @@ import org.openqa.selenium.Keys;
 import pages.FlightStatusPage;
 import utilities.ConfigReader;
 import utilities.Driver;
-import utilities.SeleniumUtils;
 
 public class FlightStatusStepDef {
 
@@ -25,7 +24,7 @@ public class FlightStatusStepDef {
     public void iClickOnFlightStatusLink() {
         new FlightStatusPage().flightStatus.click();
     }
-    @Then("I should verify that I lend on \"Flight Status\"page")
+    @Then("I should verify that I lend on Flight Status page")
     public void i_should_verify_that_i_lend_on_flight_status_page() {
    assertTrue(new FlightStatusPage().searchByDateLbl.isDisplayed());
     }
@@ -35,27 +34,31 @@ public class FlightStatusStepDef {
 
     @Then("I should be able to select valid date on a calendar")
     public void iShouldBeAbleToSelectValidDateOnACalendar() {
-        new FlightStatusPage().calendar.click();
-        new FlightStatusPage().selectDate();
+        new FlightStatusPage().calendar();
+        new FlightStatusPage().date.click();
     }
+
 
     @Then("Selected date should be displayed")
     public void selectedDateShouldBeDisplayed() {
-
-        assertTrue(new FlightStatusPage().date.isDisplayed());
+        String expected= "6";
+        System.out.println(new FlightStatusPage().date.getText());
+        assertEquals(expected,new FlightStatusPage().date.getText());
     }
 
 
 
     @Then("I should be able to enter valid flight number")
     public void iShouldBeAbleToEnterValidFlightNumber() {
+
         new FlightStatusPage().enterFlightNo.sendKeys("326");
     }
 
 
     @And("Flight number should be displayed")
     public void flightNumberShouldBeDisplayed() {
-        assertTrue(new FlightStatusPage().enterFlightNo.isDisplayed());
+        assertEquals("326",new FlightStatusPage().enterFlightNo.getAttribute("value"));
+
     }
 
     @Then("I am able to leave flight number info field empty")
@@ -66,38 +69,46 @@ public class FlightStatusStepDef {
 
     @Then("error msg should appear")
     public void errorMsgShouldAppear() {
+
         assertTrue(new FlightStatusPage().FLIGHT_NUM_REQD.isDisplayed());
     }
 
     @Then("Enter valid departure city")
     public void enterValidDepartureCity() {
-        new FlightStatusPage().departCity.sendKeys("LAX");
+        new FlightStatusPage().departCity.sendKeys("LAX"+Keys.ENTER);
+
+
     }
 
     @Then("Departure city info should be displayed")
     public void departureCityInfoShouldBeDisplayed() {
-        assertTrue(new FlightStatusPage().departCity.isDisplayed());
+
+        assertEquals("LAX",new FlightStatusPage().searchCity.getAttribute("value"));
+
     }
 
     @Then("Enter invalid departure city")
     public void enterInvalidDepartureCity() {
-        new FlightStatusPage().departCity.sendKeys("788"+Keys.ENTER);
+        new FlightStatusPage().departCity.sendKeys("788");
     }
 
-    @Then("invalid airport msg should be displayed")
-    public void invalidAirportMsgShouldBeDisplayed() {
-        assertTrue(new FlightStatusPage().departureError.isDisplayed());
+//    @Then("invalid airport msg should be displayed")
+//    public void invalidAirportMsgShouldBeDisplayed() {
+//
+//    }
+    @Then("Error msg {string} should appear under input box")
+    public void errorMsgShouldAppearUnderInputBox(String errorMsg) {
+        assertEquals(errorMsg,new FlightStatusPage().departureError.getText());
     }
-
     @Then("Enter valid arrival city")
     public void enterValidArrivalCity() {
+
         new FlightStatusPage().arrivalCity.sendKeys("JFK");
     }
 
     @Then("Arrival city info should be displayed")
     public void arrivalCityInfoShouldBeDisplayed() {
-        assertTrue(new FlightStatusPage().arrivalCity.isDisplayed());
-        
+        assertEquals("JFK",new FlightStatusPage().searchCity.getAttribute("value"));
     }
 
     @Then("Enter invalid arrival city")
@@ -105,37 +116,22 @@ public class FlightStatusStepDef {
         new FlightStatusPage().arrivalCity.sendKeys("6789"+Keys.ENTER);
     }
 
-    @Then("Search error msg should be displayed")
-    public void searchErrorMsgShouldBeDisplayed() {
-        assertTrue(new FlightStatusPage().arrivalError.isDisplayed());
+    @Then("Error msg {string} should appear")
+    public void errorMsgShouldAppear(String error) {
+        assertEquals(error,new FlightStatusPage().arrivalError.getText());
 
     }
 
+    @Then("Click on submit button.")
+    public void clickOnSubmitButton() {
+        new FlightStatusPage().submitBtn.click();
+    }
 
+    @And("I am able to click on submit button.")
+    public void iAmAbleToClickOnSubmitButton() {
+        assertTrue(new FlightStatusPage().submitBtn.isEnabled());
+    }
 
-
-//
-//    @Then("I should be able to enter invalid flight number")
-//    public void iShouldBeAbleToEnterInvalidFlightNumber() {
-//        new FlightStatusPage().enterFlightNo.sendKeys("5H7A89");
-//        new FlightStatusPage().submitBtn.click();
-//        SeleniumUtils.waitFor(5);
-//        SeleniumUtils.waitForVisibility(new FlightStatusPage().errorMsg,5);
-//
-//
-//    }
-//
-//
-//    @Then("new page should open")
-//    public void newPageShouldOpen() {
-//        assertEquals("Airline Tickets & Flights: Book Direct with Delta Air Lines - Official Site",(Driver.getDriver().getTitle()));
-//   // assertTrue(Driver.getDriver().getPageSource().contains("AIRCRAFT DETAILS"));
-//    }
-//
-//    @And("Error msg should appear")
-//    public void errorMsgShouldAppear() {
-//        assertTrue(new FlightStatusPage().errorMsg.isDisplayed());
-//    }
 
 
 }
