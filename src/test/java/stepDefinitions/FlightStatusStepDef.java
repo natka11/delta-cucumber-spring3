@@ -92,11 +92,14 @@ public class FlightStatusStepDef {
         new FlightStatusPage().departCity.sendKeys("788");
     }
 
-    @Then("invalid airport msg should be displayed")
-    public void invalidAirportMsgShouldBeDisplayed() {
-        assertEquals("Please enter a valid city code or airport name",new FlightStatusPage().departureError.getText());
+//    @Then("invalid airport msg should be displayed")
+//    public void invalidAirportMsgShouldBeDisplayed() {
+//
+//    }
+    @Then("Error msg {string} should appear under input box")
+    public void errorMsgShouldAppearUnderInputBox(String errorMsg) {
+        assertEquals(errorMsg,new FlightStatusPage().departureError.getText());
     }
-
     @Then("Enter valid arrival city")
     public void enterValidArrivalCity() {
 
@@ -106,8 +109,6 @@ public class FlightStatusStepDef {
     @Then("Arrival city info should be displayed")
     public void arrivalCityInfoShouldBeDisplayed() {
         assertEquals("JFK",new FlightStatusPage().searchCity.getAttribute("value"));
-
-
     }
 
     @Then("Enter invalid arrival city")
@@ -115,12 +116,11 @@ public class FlightStatusStepDef {
         new FlightStatusPage().arrivalCity.sendKeys("6789"+Keys.ENTER);
     }
 
-    @Then("Search error msg should be displayed")
-    public void searchErrorMsgShouldBeDisplayed() {
+    @Then("Error msg {string} should appear")
+    public void errorMsgShouldAppear(String error) {
+        assertEquals(error,new FlightStatusPage().arrivalError.getText());
 
-       assertEquals("Please enter a valid city code or airport name",new FlightStatusPage().arrivalError.getText());
     }
-
 
     @Then("Click on submit button.")
     public void clickOnSubmitButton() {
@@ -131,4 +131,7 @@ public class FlightStatusStepDef {
     public void iAmAbleToClickOnSubmitButton() {
         assertTrue(new FlightStatusPage().submitBtn.isEnabled());
     }
+
+
+
 }

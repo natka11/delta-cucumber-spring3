@@ -32,8 +32,6 @@ public class FlightStatusPage {
 
 
 
-    @FindBy (id="errorMassage")
-    public WebElement errorMsg;
 
     @FindBy (id="btn-flight-sts-submit")
     public WebElement submitBtn;
