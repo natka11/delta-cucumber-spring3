@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 
 @CucumberOptions(
-      tags ="@smoke",//"@flightStatus",
+      //tags ="@smoke",//"@flightStatus",
         features = "src/test/resources",
         glue = "stepDefinitions",
        stepNotifications = true
