@@ -1,11 +1,11 @@
+@smoke
 Feature: Baggage Travel Fees Page
-
 Background:
 Given I am on the homepage
 When I click on Updated Bag & Travel Fees
 Then I should land on the Updated Bag & Travel Fees Page
 
-  @smoke
+
   Scenario Outline: Verify the customer can checked baggage fees options
 
     When I click on "<OptionAvailable>"
@@ -17,7 +17,7 @@ Then I should land on the Updated Bag & Travel Fees Page
       | Checked Baggage Fees | 30.00     | 40.00     |
       | Carry - On Baggage   | 30.00     | 40.00     |
 
-  @smoke
+
   Scenario: Verify the customer cannot enter invalid information on Track Checked Baggage page
 
   When I click on Track Checked Baggage page

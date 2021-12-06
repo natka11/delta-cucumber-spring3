@@ -1,11 +1,13 @@
-@flightStatus
+
+@smoke
+
 Feature: As a customer I should be able to check my flight status.
 
   Background:
     Given I am on home page
     When I click on Flight Status link
 
-@smoke
+
   Scenario: Go to flight status page
     Then I should verify that I lend on Flight Status page
 
