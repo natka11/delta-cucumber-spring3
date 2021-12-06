@@ -116,11 +116,6 @@ public class FlightStatusStepDef {
         new FlightStatusPage().arrivalCity.sendKeys("6789"+Keys.ENTER);
     }
 
-    @Then("Error msg {string} should appear")
-    public void errorMsgShouldAppear(String error) {
-        assertEquals(error,new FlightStatusPage().arrivalError.getText());
-
-    }
 
     @Then("Click on submit button.")
     public void clickOnSubmitButton() {
