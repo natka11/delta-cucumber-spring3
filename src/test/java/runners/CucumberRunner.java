@@ -8,11 +8,12 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 
 @CucumberOptions(
-      tags ="@test",//"@flightStatus",
+
+      tags ="@smoke", //"@CarRent", //"@FlightStatus", //"@BagTravelFees"
         features = "src/test/resources",
         glue = "stepDefinitions",
        stepNotifications = true
- //  ,dryRun = true   // dryRun scans the resources folder and generates step definition snippets
+       ,dryRun = true   // dryRun scans the resources folder and generates step definition snippets
         // used for generating snippets quickly
       ,snippets = CucumberOptions.SnippetType.UNDERSCORE  // generates Camel Case Style Snippets
         ,plugin = {

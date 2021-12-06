@@ -13,13 +13,12 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.SeleniumUtils;
 
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 public class BagAndTravelFeesStepDef {
 
     String twoOption;
+    String option;
 
     @Given("I am on the homepage")
     public void i_am_on_the_homepage() {
@@ -81,14 +80,15 @@ public class BagAndTravelFeesStepDef {
         new BagAndTravelFees().LastName.sendKeys(dataTable.get(0).get("LastName"));
     }
 
-     @Then("I should have an error message because I entered invalid information")
-     public void i_should_have_an_error_message_because_invalid_information(){
+    @Then("I should have an error message because I entered invalid information")
+    public void i_should_have_an_error_message_because_invalid_information() {
 
-            new BagAndTravelFees().CheckBoxStatus.click();
-            String expected = "To continue, please correct";
-            String pageSource = Driver.getDriver().getPageSource();
-            Assert.assertTrue(pageSource.contains(expected));
+        new BagAndTravelFees().CheckBoxStatus.click();
+        String expected = "To continue, please correct";
+        String pageSource = Driver.getDriver().getPageSource();
+        Assert.assertTrue(pageSource.contains(expected));
     }
+
     @When("I click on My Trip button")
     public void i_click_on_my_trip_button() {
 
@@ -112,11 +112,60 @@ public class BagAndTravelFeesStepDef {
         Assert.assertEquals(expectedOption, actualOption);
     }
 
-        @Then("The find my trip options should be the following")
-        public void the_find_my_trip_options_should_be_the_following(List<String> expectedTripOption) {
+    @Then("The find my trip options should be the following")
+    public void the_find_my_trip_options_should_be_the_following(List<String> expectedTripOption) {
 
-         List<String> actualOptions = SeleniumUtils.getElementsText(new BagAndTravelFees().FindMyTripOptions);
-         Assert.assertEquals(expectedTripOption, actualOptions);
-        }
+        List<String> actualOptions = SeleniumUtils.getElementsText(new BagAndTravelFees().FindMyTripOptions);
+
+        Assert.assertEquals(expectedTripOption, actualOptions);
     }
+
+    @Then("I should be able to click on Active Military")
+    public void i_should_be_able_to_click_on_active_military() {
+
+        SeleniumUtils.scroll(0, 500);
+        new BagAndTravelFees().ActiveMilitary.click();
+
+    }
+
+    @Then("I should be able to verify Military Checked Baggage Allowance")
+    public void i_should_be_able_to_verify_military_checked_baggage_allowance(List<String> expectedMilitaryAllowanceOption) {
+
+        List<String> actualMilitaryAllowanceOptions = SeleniumUtils.getElementsText(new BagAndTravelFees().MilitaryCheckedBaggageAllowance);
+        Assert.assertEquals(expectedMilitaryAllowanceOption, actualMilitaryAllowanceOptions);
+    }
+
+    @Then("I should be able to click on Free Carry-On Bag and Personal Item")
+    public void i_should_be_able_to_click_on_free_carry_on_bag_and_personal_item() {
+        SeleniumUtils.scroll(0, 500);
+        new BagAndTravelFees().FreeCarryBagPersonaItem.click();
+    }
+
+    @Then("I should be able to verify the following items:")
+    public void i_should_be_able_to_verify_the_following_items(List<String> expectedFreeCarryBagPersonaItemOption) {
+
+        List<String> actualFreeCarryBagPersonaItemOption = SeleniumUtils.getElementsText(new BagAndTravelFees().FreeCarryBagPersonaItemOption);
+        Assert.assertEquals(expectedFreeCarryBagPersonaItemOption, actualFreeCarryBagPersonaItemOption);
+    }
+
+    @When("I click on Excess and Overweight Baggage")
+    public void i_click_on_excess_and_overweight_baggage() {
+
+        SeleniumUtils.scroll(0, 500);
+        new BagAndTravelFees().ExcessOverweightBaggage.click();
+
+    }
+
+    @Then("I should land on Excess and Overweight Baggage")
+    public void i_should_land_on_excess_and_overweight_baggage() {
+
+        String expectedTitle = "Excess & Overweight Baggage";
+        Assert.assertTrue(Driver.getDriver().getTitle().contains(expectedTitle));
+
+
+    }
+}
+
+
+
 

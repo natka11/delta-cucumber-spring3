@@ -63,9 +63,22 @@ public class BagAndTravelFees {
     @FindBy(xpath = "//div[@id='tabs']//a")
     public List<WebElement> FindMyTripOptions;
 
+    @FindBy(xpath = "//a[.='Active Military']")
+    public  WebElement ActiveMilitary;
 
-    // 20 minutes
-    //span [@class='desktop-text']//a [@href='/us/en/baggage/checked-baggage/minute-bag-guarantee']
+    @FindBy(xpath = "//div[@class='container-fluid ']//div[@style='text-align: center;']")
+    public List<WebElement>  MilitaryCheckedBaggageAllowance;
+
+    @FindBy(xpath = "//a[.='+1 Free Carry-On Bag and 1 Personal Item']")
+    public WebElement  FreeCarryBagPersonaItem;
+
+    @FindBy(xpath = "//div[@class='container-fluid ']//h3")
+    public List<WebElement>  FreeCarryBagPersonaItemOption;
+
+    @FindBy(xpath = "//a[.='Excess & Overweight Baggage']")
+    public WebElement  ExcessOverweightBaggage;
+
+
 
     public void clickOnProductLink(String product){
         String xpath = "//a[@href='#baggageFees']";

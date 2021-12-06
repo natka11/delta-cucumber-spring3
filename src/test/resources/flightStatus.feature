@@ -1,52 +1,56 @@
-@flightStatus
+
+@smoke
+
 Feature: As a customer I should be able to check my flight status.
 
   Background:
     Given I am on home page
     When I click on Flight Status link
 
-@smoke
+
   Scenario: Go to flight status page
     Then I should verify that I lend on Flight Status page
 
 
 
 
-
+@FlightStatus
   Scenario: Search by date
       Then I should be able to select valid date on a calendar
       And Selected date should be displayed
 
 
-
+@FlightStatus
   Scenario: Flight Number
     Then I should be able to enter valid flight number
     And Flight number should be displayed
 
-
+@FlightStatus
   Scenario: Do not enter any  flight number info
     Then I am able to leave flight number info field empty
-    Then  This msg "Please enter a valid Flight Number. If you do not know the flight number, please enter the origin and destination." should appear
+    Then  error msg should appear
 
+@FlightStatus
   Scenario: Enter departure city
     Then Enter valid departure city
     Then Departure city info should be displayed
 
-
+@FlightStatus
   Scenario: Enter invalid departure city
     Then Enter invalid departure city
     Then Error msg "Please enter a valid city code or airport name" should appear under input box
 
+@FlightStatus
   Scenario: Enter  arrival city
     Then Enter valid arrival city
     Then Arrival city info should be displayed
 
-
+@FlightStatus
   Scenario: Enter invalid arrival city
     Then Enter invalid arrival city
-    Then Error msg "Please enter a valid city code or airport name" should appear
+    Then Error msg "Please enter a valid city code or airport name" should appear under input box
 
-
+@FlightStatus
   Scenario: Verify submit button
       Then Click on submit button.
       And I am able to click on submit button.
