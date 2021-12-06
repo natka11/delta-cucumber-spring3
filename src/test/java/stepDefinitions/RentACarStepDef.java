@@ -25,11 +25,11 @@ public class RentACarStepDef {
 
     @When("I click on rent a car link")
     public void iClickOnRentACarLink() {
-        new RentACarPage().rentACar.click();
+        new RentACarPage().rentalCARButtonClick();
     }
     @Then("I should verify that I land on \"Car Search\" page")
     public void i_should_verify_that_i_land_on_car_search_page() {
-        assertEquals("Car Search: Delta Air Lines",Driver.getDriver().getTitle());
+        assertEquals("Car Search : Delta Air Lines",Driver.getDriver().getTitle());
     }
 
     @Then("Enter a valid pick-up location")
@@ -115,6 +115,8 @@ public class RentACarStepDef {
     public void i_should_verify_that_i_land_on_car_booking_page() {
         assertEquals("Car Search Results: Delta Air Lines",Driver.getDriver().getTitle());
     }
+
+
 
 
 }

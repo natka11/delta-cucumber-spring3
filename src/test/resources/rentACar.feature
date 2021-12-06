@@ -1,11 +1,11 @@
-@smoke
+
 Feature: As a customer I should be able to rent a car.
 
   Background:
     Given I am on home page
     When I click on rent a car link
 
-
+  @smoke
   Scenario: Check car search page
     Then I should verify that I land on "Car Search" page
 

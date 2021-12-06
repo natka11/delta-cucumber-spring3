@@ -85,4 +85,10 @@ public class RentACarPage {
 
     }
 
+    public void rentalCARButtonClick(){
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("arguments[0].click()", rentACar);
+
+    }
+
 }

@@ -1,10 +1,10 @@
-@smoke
+
 Feature: Baggage Travel Fees Page
 Background:
 Given I am on the homepage
 When I click on Updated Bag & Travel Fees
 Then I should land on the Updated Bag & Travel Fees Page
-
+  @smoke
 @BagTravelFees
   Scenario Outline: Verify the customer can checked baggage fees options
 
