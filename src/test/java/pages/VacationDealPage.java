@@ -5,6 +5,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import utilities.Driver;
@@ -88,17 +89,26 @@ public class VacationDealPage {
     @FindBy(xpath = " //span[@class='select-ui-wrapper dropdownSize'] ")
     public WebElement PromoCodeField;
 
-    @FindBy(xpath = "   //span[@class='select-ui-optionList-wrapper']")
-    public WebElement PromoCodeOption;
+    @FindBy( xpath = " //span[@class='select-ui-optionList-wrapper']")
+    public List<WebElement> PromoCodeOption;
+
+    @FindBy(xpath = " //input[@class='smallScreenInput'] ")
+    public WebElement skyMylesNumber;
+
+    @FindBy(xpath = "  //button[@class='button ui-link shopBtn cta-red'] ")
+    public WebElement skyMylesbutton;
 
 
 
 
 
-    public void welcomeTextDisplayed(){
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        js.executeScript("arguments[0].click()", welcomeText);
+    public void getPromoOption(String promoUI) throws InterruptedException {
 
+        while(PromoCodeOption.contains(promoUI)){
+            System.out.println(PromoCodeOption);
+            Driver.getDriver().navigate().forward();
+            Thread.sleep(2000);
+        }
     }
 
     public void putDOB(){

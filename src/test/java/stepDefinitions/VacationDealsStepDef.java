@@ -2,6 +2,7 @@ package stepDefinitions;
 
 import com.github.javafaker.Faker;
 import com.github.javafaker.Name;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -9,6 +10,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import pages.VacationDealPage;
+import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.SeleniumUtils;
 
@@ -99,32 +101,28 @@ public class VacationDealsStepDef {
     }
 
 
+
+    @Given("I am on the Delta vacation delas page")
+    public void i_am_on_the_delta_vacation_delas_page() {
+        Driver.getDriver().get(ConfigReader.getProperty("url2"));
+        System.out.println(Driver.getDriver().getTitle());
+    }
+
+
     @When("On the Vacation page click on {string} and {string} \\(required fields)")
-    public void on_the_vacation_page_click_on_and_required_fields(String promocode, String string2)  throws InterruptedException {
-
-        new VacationDealPage().vacationDealsButtonClick();
-        switchToWindow("VACATIONING TODAY MEANS MORE : Delta Vacations");
-
-//        List<String> strings = Arrays.asList(new VacationDealPage().promoText.getText());
-//        System.out.println(strings);
+    public void on_the_vacation_page_click_on_and_required_fields(String promocode, String skyMilesUI)  throws InterruptedException {
 
         new VacationDealPage().PromoCodeField.click();
-//        new VacationDealPage().PromoCodeOption.isEnabled();
-//        new VacationDealPage().PromoCodeOption.sendKeys(promocode);
 
-        System.out.println(new VacationDealPage().PromoCodeOption.getText());
+        new VacationDealPage().getPromoOption(promocode);
 
-        new VacationDealPage().PromoCodeOption.sendKeys(promocode);
+        new VacationDealPage().skyMylesNumber.sendKeys(skyMilesUI);
+        new VacationDealPage().skyMylesNumber.click();
 
-        List<String> strings = Arrays.asList(new VacationDealPage().PromoCodeOption.getText());
-
-
-
-      //  new VacationDealPage().PromoCodeOption.click();
-
-
-
+        new VacationDealPage().skyMylesbutton.click();
         Thread.sleep(2000);
+
+        System.out.println(Driver.getDriver().getTitle());
 
 
     }
@@ -133,6 +131,7 @@ public class VacationDealsStepDef {
     @Then("Verify the new page with deals")
     public void verify_the_new_page_with_deals() {
 
+        Assert.assertTrue(Driver.getDriver().getTitle().equals("Advanced Search : Delta Vacations : Delta Air Lines"));
     }
 
 }
