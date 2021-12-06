@@ -55,7 +55,7 @@ public class FlightStatusPage {
     public WebElement departureError;
 
     @FindBy(id="search-error")
-    public WebElement arrivalError;
+    public WebElement Error;
 
 
 
