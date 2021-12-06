@@ -1,8 +1,10 @@
 package pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import utilities.Driver;
 
 public class RentACarPage {
@@ -17,15 +19,14 @@ public class RentACarPage {
     @FindBy (id = "carPickUpLocation")
     public WebElement pickUpLocation;
 
-//    @FindBy (id = "dropOffLocationChk")
-//    public WebElement dropOffCheckBox;
-
-//    @FindBy (id = "carDropOffLocation")
-//    public WebElement dropOffLocation;
-
-
     @FindBy (id = "carPickUpDate")
     public WebElement pickUpDate;
+
+    @FindBy (xpath = "//a[@class='ui-state-default'][text()='15'][1]")
+    public WebElement pickUpDateChoice;
+
+    @FindBy (xpath = "//a[@class='ui-state-default'][text()='15'][2]")
+    public WebElement dropOffDateChoice;
 
     @FindBy (id = "carDropOffDate")
     public WebElement dropOffDate;
@@ -42,5 +43,46 @@ public class RentACarPage {
 
     @FindBy (id="btnSubmit")
     public WebElement bookACarButton;
+
+    public void rentACarClick(){
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("arguments[0].click()",rentACar);
+
+    }
+
+    public void bookACarClick(){
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("arguments[0].click()",bookACarButton);
+
+    }
+
+    public void selectPickUpDate(){
+        new RentACarPage().pickUpDate.click();
+        new RentACarPage().pickUpDateChoice.click();
+
+    }
+
+    public void selectDropOffDate(){
+        new RentACarPage().dropOffDate.click();
+        new RentACarPage().pickUpDateChoice.click();
+
+    }
+
+    public void selectPickUpTime(){
+        Select select = new Select(pickUpTime);
+        select.selectByIndex(1);
+
+    }
+
+    public void selectDropOffTime(){
+        Select select = new Select(dropOffTime);
+        select.selectByIndex(3);
+    }
+
+    public void selectAge(){
+        Select select = new Select(age);
+        select.selectByIndex(6);
+
+    }
 
 }
