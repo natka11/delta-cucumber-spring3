@@ -70,7 +70,7 @@ public class RentACarStepDef {
 
     @Then("Select a valid pick-up time")
     public void selectAValidPickUpTime() {
-        new RentACarPage().selectPickUpTime();
+        new RentACarPage().selectPickUpTime(1);
 
 
     }
@@ -84,7 +84,7 @@ public class RentACarStepDef {
     @Then("Select a valid drop-off time")
     public void selectAValidDropOffTime() {
 
-        new RentACarPage().selectDropOffTime();
+        new RentACarPage().selectDropOffTime(3);
 
     }
 
@@ -97,7 +97,7 @@ public class RentACarStepDef {
     @Then("Select a valid age")
     public void selectAValidAge() {
 
-        new RentACarPage().selectAge();
+        new RentACarPage().selectAge(6);
 
     }
 

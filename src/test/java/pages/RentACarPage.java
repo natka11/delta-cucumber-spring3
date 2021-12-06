@@ -68,20 +68,20 @@ public class RentACarPage {
 
     }
 
-    public void selectPickUpTime(){
+    public void selectPickUpTime(int index){
         Select select = new Select(pickUpTime);
-        select.selectByIndex(1);
+        select.selectByIndex(index);
 
     }
 
-    public void selectDropOffTime(){
+    public void selectDropOffTime(int index){
         Select select = new Select(dropOffTime);
-        select.selectByIndex(3);
+        select.selectByIndex(index);
     }
 
-    public void selectAge(){
+    public void selectAge(int index){
         Select select = new Select(age);
-        select.selectByIndex(6);
+        select.selectByIndex(index);
 
     }
 
