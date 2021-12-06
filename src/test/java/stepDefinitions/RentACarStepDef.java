@@ -40,7 +40,7 @@ public class RentACarStepDef {
 
     @And("pick-up location info should be displayed")
     public void pickUpLocationShouldBeDisplayed() {
-        assertEquals("WASHINGTON DC",new RentACarPage().pickUpLocation.getAttribute("value"));
+        assertEquals("WASHINGTON DC", new RentACarPage().pickUpLocation.getAttribute("value"));
 
     }
 
@@ -84,7 +84,7 @@ public class RentACarStepDef {
     @Then("Select a valid drop-off time")
     public void selectAValidDropOffTime() {
 
-        new RentACarPage().selectDropOffTime(3);
+        new RentACarPage().selectDropOffTime(2);
 
     }
 

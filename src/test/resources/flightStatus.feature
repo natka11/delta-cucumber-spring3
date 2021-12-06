@@ -14,43 +14,43 @@ Feature: As a customer I should be able to check my flight status.
 
 
 
-
+@FlightStatus
   Scenario: Search by date
       Then I should be able to select valid date on a calendar
       And Selected date should be displayed
 
 
-
+@FlightStatus
   Scenario: Flight Number
     Then I should be able to enter valid flight number
     And Flight number should be displayed
 
-
+@FlightStatus
   Scenario: Do not enter any  flight number info
     Then I am able to leave flight number info field empty
     Then  error msg should appear
 
+@FlightStatus
   Scenario: Enter departure city
     Then Enter valid departure city
     Then Departure city info should be displayed
 
-
+@FlightStatus
   Scenario: Enter invalid departure city
     Then Enter invalid departure city
     Then Error msg "Please enter a valid city code or airport name" should appear under input box
 
+@FlightStatus
   Scenario: Enter  arrival city
     Then Enter valid arrival city
     Then Arrival city info should be displayed
 
-
+@FlightStatus
   Scenario: Enter invalid arrival city
     Then Enter invalid arrival city
     Then Error msg "Please enter a valid city code or airport name" should appear under input box
 
-
-
-
+@FlightStatus
   Scenario: Verify submit button
       Then Click on submit button.
       And I am able to click on submit button.
