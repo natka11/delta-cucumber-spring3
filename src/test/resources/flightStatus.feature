@@ -1,4 +1,4 @@
-@FlightStatus
+@Sprint3
 Feature: As a customer I should be able to check my flight status.
 
   Background:

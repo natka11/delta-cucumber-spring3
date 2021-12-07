@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 
 @CucumberOptions(
 
-     // tags ="@smoke", //"@CarRent", //"@FlightStatus", //"@BagTravelFees"
+     // tags ="@smoke",//"@Sprint3" //"@CarRent", //"@FlightStatus", //"@BagTravelFees"
         features = "src/test/resources",
         glue = "stepDefinitions",
        stepNotifications = true
